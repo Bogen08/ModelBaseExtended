@@ -1,37 +1,56 @@
 index:
     path: /
     controller: App\Controller\DefaultController::index
-    
+
+search:
+    path: /search/
+    controller: App\Controller\DefaultController::search
+
 model:
-    path: /model
+    path: /model/{id}
     controller: App\Controller\ModelController::model
 
-models_list:
-    path: /api/v1/models
-    controller: App\Controller\ModelController::indexAction
-    methods: [GET]
+add:
+    path: /add
+    controller: App\Controller\ModelController::addModel
 
-models_create:
-    path: /api/v1/models
-    controller: App\Controller\ModelController::createAction
-    methods: [POST]
+category:
+    path: /category/{id}
+    controller: App\Controller\CategoryController::category
 
-categories_list:
-    path: /api/v1/models
-    controller: App\Controller\ModelController::indexAction
-    methods: [GET]
+user:
+    path: /user/{id}
+    controller: App\Controller\UserController::user
 
-categories_create:
-    path: /api/models
-    controller: App\Controller\ModelController::createAction
-    methods: [POST]
+searchget:
+    path: api/search/{query}
+    controller: App\Controller\DefaultController::searchModel
 
-users_list:
-    path: /api/v1/users
-    controller: App\Controller\ModelController::indexAction
-    methods: [GET]
+searchempty:
+    path: api/search/
+    controller: App\Controller\DefaultController::searchEmpty
 
-users_create:
-    path: /api/users
-    controller: App\Controller\ModelController::createAction
-    methods: [POST]
+userget:
+    path: api/userget/{id}
+    controller: App\Controller\UserController::getUsers
+
+userModels:
+    path: api/userModels/{id}
+    controller: App\Controller\UserController::getUserModels
+
+categoryget:
+    path: api/categoryget/{id}
+    controller: App\Controller\CategoryController::getCategory
+
+featured:
+    path: api/featured
+    controller: App\Controller\DefaultController::getFeatured
+
+categorylist:
+    path: api/categorylist
+    controller: App\Controller\CategoryController::getCategoryList
+
+categoryContents:
+    path: api/category/{id}
+    controller: App\Controller\CategoryController::getCategoryContents
+

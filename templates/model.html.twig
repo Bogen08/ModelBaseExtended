@@ -5,32 +5,9 @@
  {% block title %} Model {% endblock %}
     
  {% block body %}
-     <header>
-         <a href="./" class="logo"><img class="logo" src="../../img/logo.png"/></a>
-         <form action="searchAction" method="post">
-             <button type="submit"><i class="fas fa-search"></i></button>
-             <input type="text" name="searchString"/>
-         </form>
-         <div class="Add-button">
-             <a href="add">
-                 Add
-                 <i class="fas fa-plus"></i>
-             </a>
-         </div>
-         <div class="Sign-in">
-
-         </div>
-     </header>
+     {% embed "header.twig" %}
+     {% endembed %}
      <main id="root"></main>
-     <footer>
-         <a href="https://facebook.com">
-             <i class="fab fa-facebook-f"></i>
-         </a>
-         <a href="https://instagram.com">
-             <i class="fab fa-instagram"></i>
-         </a>
-         <a href="https://twitter.com">
-             <i class="fab fa-twitter"></i>
-         </a>
-     </footer>
+     {% embed "footer.twig" %}
+     {% endembed %}
  {% endblock %}

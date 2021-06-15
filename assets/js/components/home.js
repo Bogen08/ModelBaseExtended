@@ -8,16 +8,20 @@ import {Route, Switch,Redirect, Link, withRouter} from 'react-router-dom';
 class Home extends Component {
     constructor() {
         super();
-        this.state = { featured: [], loading: true};
+        this.state = { featured: [],categories: [], loading: true};
     }
     componentDidMount() {
         this.getFeatured();
     }
 
     getFeatured() {
+        axios.get(`http://localhost:8000/api/categorylist`).then(category_list => {
+            this.setState({ categories: category_list.data});
+        });
         axios.get(`http://localhost:8000/api/featured`).then(featured => {
-            this.setState({ featured: featured.data, loading: false})
-        })
+            this.setState({ featured: featured.data, loading: false});
+        });
+
     }
 
     render() {
@@ -29,23 +33,13 @@ class Home extends Component {
                 <nav>
                     <ul class="category-list">
 
-                        <li>
-                            <a href="/model">
-                            Tools
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/model">
-                            Gadgets
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/model">
-                            Hobby
-                            </a>
-                        </li>
+                        {this.state.categories.map(category =>
+                            <li>
+                                <a href={"/category/"+category.id}>
+                                    {category.name}
+                                </a>
+                            </li>
+                            )}
 
                         <li>
                             <a>
@@ -63,13 +57,13 @@ class Home extends Component {
                             <div>
 
                                     <div class="short-description">
-                                        <a href="/model" style={{ textDecoration: 'none' }}>
+                                        <a href={"/model/"+post.id} style={{ textDecoration: 'none' }}>
                                             {post.title}<br/>
                                         </a>
-                                        by <b>{post.owner}</b>
+                                        by <b>{post.owner_id}</b>
                                     </div>
                                 <Link to="/model" style={{ textDecoration: 'none' }}>
-                                        <img src={post.img1}/>
+                                        <img src={'/uploads/' + post.owner_id + "/" + post.title + "/img/" + post.img1}/>
                                 </Link>
                             </div>
 

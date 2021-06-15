@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
+use App\Entity\Models;
+use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class DefaultController extends AbstractController{
@@ -22,37 +26,53 @@ class DefaultController extends AbstractController{
      * @Route("/api/featured", name="home")
      * @return Response
      */
-    public function getFeatured()
+    public function getFeatured(): Response
     {
-        $featured = [
-            [
-                'id' => 1,
-                'owner' => 'Mister A',
-                'title' => 'Ghost keychain',
-                'img1' => 'img/placeholders/1.jpg'
-            ],
-            [
-                'id' => 2,
-                'owner' => 'Mister A',
-                'title' => 'Ghost keychain',
-                'img1' => 'img/placeholders/2.jpg'
-            ],
-            [
-                'id' => 3,
-                'owner' => 'Mister A',
-                'title' => 'Ghost keychain',
-                'img1' => 'img/placeholders/3.jpg'
-            ],
-        ];
+        $featured = $this->getDoctrine()->getRepository(Models::class)->findFeatured();
 
-        $response = new Response();
+        return $this->json($featured);
+    }
 
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
+    /**
+     * @Route("/search", name="search", defaults={"reactRouting": null})
+     * @param Request $request
+     * @return Response
+     */
+    public function search(Request $request): Response
+    {
+        $data=$request->get('search');
+        return $this->render('search.html.twig',['data'=>$data,'id'=>1]);
+    }
 
-        $response->setContent(json_encode($featured));
+    /**
+     * @Route("/api/search/{query}", name="searchget", methods={"GET","HEAD"})
+     * @param string $query
+     * @return Response
+     */
+    public function searchModel(string $query): Response
+    {
 
-        return $response;
+        $repo = $this->getDoctrine()
+            ->getRepository(Models::class);
+        $data = $repo->createQueryBuilder('m')
+            ->where('m.title LIKE :title')
+            ->setParameter('title','%'.$query.'%')
+            ->getQuery()
+            ->getResult();
+
+        return $this->json($data);
+    }
+    /**
+     * @Route("/api/search/", name="searchget", methods={"GET","HEAD"})
+     * @return Response
+     */
+    public function searchEmpty(): Response
+    {
+
+
+        $data = $this->getDoctrine()->getRepository(Models::class)->findAll();
+
+        return $this->json($data);
     }
 
 

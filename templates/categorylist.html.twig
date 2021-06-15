@@ -1,4 +1,4 @@
-{# templates/modelview.html.twig #}
+{# templates/categorylist.html.twig #}
 
 <!DOCTYPE html>
 <html>
@@ -6,19 +6,19 @@
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
-        {{ encore_entry_link_tags('model') }}
+        {{ encore_entry_link_tags('category') }}
     {% endblock %}
     <script>
-        var id={{ post_id }}
+        var id = {{ id }}
     </script>
 
 </head>
 <body>
 {% block body %}{% endblock %}
 {% block javascripts %}
-    {{ encore_entry_script_tags('model') }}
+    {{ encore_entry_script_tags('category') }}
     <script src="https://kit.fontawesome.com/0dcb25cdf9.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{asset('js/imgSwitch.js')}}" defer></script>
+
 {% endblock %}
 </body>
 </html>

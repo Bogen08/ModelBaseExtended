@@ -1,0 +1,15 @@
+{# ./templates/category.html.twig #}
+    
+{% extends 'addModel.html.twig' %}
+
+ {% block title %} Category {% endblock %}
+    
+ {% block body %}
+     {% embed "header.twig" %}
+     {% endembed %}
+     <main id="root">
+         {{ form(form) }}
+     </main>
+     {% embed "footer.twig" %}
+     {% endembed %}
+ {% endblock %}

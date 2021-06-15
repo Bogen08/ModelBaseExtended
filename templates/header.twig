@@ -1,0 +1,16 @@
+<header>
+    <a href={{path('index')}} class="logo"><img class="logo" src="../../img/logo.png"/></a>
+    <form action="{{ path('search') }}" method="post">
+        <button type="submit"><i class="fas fa-search"></i></button>
+        <input type="text" name="search" />
+    </form>
+    <div class="Add-button">
+        <a href="{{path('add')}}">
+            Add
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+    <div class="Sign-in">
+
+    </div>
+</header>
