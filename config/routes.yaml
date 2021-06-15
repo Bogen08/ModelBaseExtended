@@ -4,4 +4,34 @@ index:
     
 model:
     path: /model
-    controller: App\Controller\DefaultController::model
+    controller: App\Controller\ModelController::model
+
+models_list:
+    path: /api/v1/models
+    controller: App\Controller\ModelController::indexAction
+    methods: [GET]
+
+models_create:
+    path: /api/v1/models
+    controller: App\Controller\ModelController::createAction
+    methods: [POST]
+
+categories_list:
+    path: /api/v1/models
+    controller: App\Controller\ModelController::indexAction
+    methods: [GET]
+
+categories_create:
+    path: /api/models
+    controller: App\Controller\ModelController::createAction
+    methods: [POST]
+
+users_list:
+    path: /api/v1/users
+    controller: App\Controller\ModelController::indexAction
+    methods: [GET]
+
+users_create:
+    path: /api/users
+    controller: App\Controller\ModelController::createAction
+    methods: [POST]

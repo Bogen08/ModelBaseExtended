@@ -1,101 +1,36 @@
-<!DOCTYPE html>
-<head>
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    <script src="https://kit.fontawesome.com/0dcb25cdf9.js" crossorigin="anonymous"></script>
-    <title>Homepage</title>
-</head>
-<body>
-    <header>
-        <a href="./" class="logo"><img class="logo" src="{{asset('img/logo.png')}}"></a>
-        <form action="searchAction" method="post">
-            <button type="submit"><i class="fas fa-search"></i></button>
-            <input type="text" name="searchString">
-        </form>
-        <div class="Add-button">
-            <a href="add">
-            Add
-            <i class="fas fa-plus"></i>
-            </a>
-        </div>
-        <div class="Sign-in">
-            
-        </div>
-    </header>
-    <main>
-        Categories
-        <div>
-            <nav>
-                <ul class="category-list">
+{# ./templates/home.html.twig #}
+    
+{% extends 'featured.html.twig' %}
+    
+ {% block title %} Homepage {% endblock %}
+    
+ {% block body %}
+     <header>
+         <a href="./" class="logo"><img class="logo" src="../../img/logo.png"/></a>
+         <form action="searchAction" method="post">
+             <button type="submit"><i class="fas fa-search"></i></button>
+             <input type="text" name="searchString"/>
+         </form>
+         <div class="Add-button">
+             <a href="add">
+                 Add
+                 <i class="fas fa-plus"></i>
+             </a>
+         </div>
+         <div class="Sign-in">
 
-                    <li>
-                        Tools
-                    </li>
-
-                    <li>
-                        Gadgets
-                    </li>
-
-                    <li>
-                        Hobby
-                    </li>
-                    
-                    <li>
-                    <a href=>
-                        Your Files
-                    </a>
-                    </li>
-
-                </ul>
-            </nav>
-            <div class="featured">
-                Featured
-                <div class="showcase">
-
-                    <div>
-                    <div class="short-description">
-                    <a href="{{ path('model') }}">
-                        Ghost keychain<br>
-                        by <b>Mister A</b>
-                        </a>
-                    </div>
-                    <a href="{{ path('model') }}">
-                    <img src="{{asset('img/placeholders/1.jpg')}}"></img>
-                    </a>
-                    </div>
-
-                     <div>
-                    <div class="short-description">
-                        Ghost keychain<br>
-                        by <b>Mister A</b>
-                    </div>
-                    <a href="{{ path('model') }}">
-                    <img src="{{asset('img/placeholders/2.jpg')}}"></img>
-                    </a>
-                    </div>
-
-                     <div>
-                    <div class="short-description">
-                        Ghost keychain<br>
-                        by <b>Mister A</b>
-                    </div>
-                    <a href="{{ path('model') }}">
-                    <img src="{{asset('img/placeholders/3.jpg')}}"></img>
-                    </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <footer>
-            <a href="https://facebook.com">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://instagram.com">
-            <i class="fab fa-instagram"></i>
-            </a>
-        <a href="https://twitter.com">
-            <i class="fab fa-twitter"></i>
-            </a>
-        </footer>
-    </main>
-</body>
+         </div>
+     </header>
+     <main id="root"></main>
+     <footer>
+         <a href="https://facebook.com">
+             <i class="fab fa-facebook-f"></i>
+         </a>
+         <a href="https://instagram.com">
+             <i class="fab fa-instagram"></i>
+         </a>
+         <a href="https://twitter.com">
+             <i class="fab fa-twitter"></i>
+         </a>
+     </footer>
+ {% endblock %}

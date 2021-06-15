@@ -1,98 +1,36 @@
-<!DOCTYPE html>
-<head>
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/model.css')}}">
-    <script src="https://kit.fontawesome.com/0dcb25cdf9.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{asset('js/three.min.js')}}" defer></script>
-    <script type="text/javascript" src="{{asset('js/STLLoader.js')}}" defer></script>
-    <script type="text/javascript" src="{{asset('js/OrbitControls.js')}}" defer></script>
-    <script type="text/javascript" src="{{asset('js/STLViewer.js')}}" defer></script>
-    <script type="text/javascript" src="{{asset('js/imgSwitch.js')}}" defer></script>
-    <script>
-        window.onload = function() {
-            STLViewer("{{asset('uploads/Goben/Ghost Keychain/stl/hardprint_halloween_ghost.stl')}}", "model")
-        }
+{# ./templates/model.html.twig #}
+    
+{% extends 'modelview.html.twig' %}
 
-    </script>
+ {% block title %} Model {% endblock %}
+    
+ {% block body %}
+     <header>
+         <a href="./" class="logo"><img class="logo" src="../../img/logo.png"/></a>
+         <form action="searchAction" method="post">
+             <button type="submit"><i class="fas fa-search"></i></button>
+             <input type="text" name="searchString"/>
+         </form>
+         <div class="Add-button">
+             <a href="add">
+                 Add
+                 <i class="fas fa-plus"></i>
+             </a>
+         </div>
+         <div class="Sign-in">
 
-    <title>Model</title>
-</head>
-<body>
-    <header>
-        <a href="./" class="logo"><img class="logo" src="{{asset('img/logo.png')}}"></a>
-        <form action="searchAction" method="post">
-            <button type="submit"><i class="fas fa-search"></i></button>
-            <input type="text" name="searchString">
-        </form>
-        <div class="Add-button">
-            <a href="add">
-            Add
-            <i class="fas fa-plus"></i>
-            </a>
-        </div>
-        <div class="Sign-in">
-            
-        </div>
-    </header>
-    <main>
-        <div class="model-box">
-            <div class="model-description-box">
-                    Ghost keychain
-                    <br>
-                by <b>Mister A</a></b>
-                    <div>
-                        <img id="bigimg" src="{{asset('img/placeholders/1.jpg')}}"></img>
-                        <div class="model-images">
-                            <img id="imga" class="active" src="{{asset('img/placeholders/1.jpg')}}"></img>
-                            <img id="imgb" src="{{asset('img/placeholders/2.jpg')}}"></img>
-                        </div>
-                        <div class="model-description">
-                            <div>
-                                Summary
-                                <br>
-                                Spooky ghost keychain for all your keychaining needs
-                            </div>
-                            <div>
-                                Recommended print settings
-                                <br>
-                                Rafts: <b>Yes</b><br>
-                                Supports: <b>Yes</b><br>
-                                Resolution: <b>960</b><br>
-                                Infill: <b>0.5</b>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <div class="model-menu">
-                 <div>
-                     3D View
-                 </div>
-                <div id="model">
-
-                </div>
-                 <div>
-                     <a href="public/uploads/<?=$model->getOwner() ?>/<?=$model->getTitle() ?>/stl/<?=$model->getFile();?>" download>
-                     Save
-                     </a>
-
-                 </div>
-                 <div>
-                     Download for:
-                        <br>
-                        <b>Free</b>
-                 </div>
-            </div>
-        </div>
-        <footer>
-            <a href="https://facebook.com">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://instagram.com">
-            <i class="fab fa-instagram"></i>
-            </a>
-        <a href="https://twitter.com">
-            <i class="fab fa-twitter"></i>
-            </a>
-        </footer>
-    </main>
-</body>
+         </div>
+     </header>
+     <main id="root"></main>
+     <footer>
+         <a href="https://facebook.com">
+             <i class="fab fa-facebook-f"></i>
+         </a>
+         <a href="https://instagram.com">
+             <i class="fab fa-instagram"></i>
+         </a>
+         <a href="https://twitter.com">
+             <i class="fab fa-twitter"></i>
+         </a>
+     </footer>
+ {% endblock %}
